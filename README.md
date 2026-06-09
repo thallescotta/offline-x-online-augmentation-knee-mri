@@ -205,17 +205,20 @@ summary.json       → AUC média, std, IC95% e resultados por fold
 
 ---
 
+
 ## Referências
 
-- Berrimi, M. (2022). OAI MRI 3D DESS dataset. Kaggle.
-- Chlap et al. (2021). Review of medical image augmentation. *J. Med. Imaging & Rad. Oncology*.
-- Hara et al. (2018). Can 3D CNNs retrace 2D CNNs and ImageNet? *CVPR*.
-- Kay et al. (2017). The Kinetics human action video dataset. *arXiv:1705.06950*.
-- Kingma & Ba (2014). Adam. *arXiv:1412.6980*.
-- Montgomery (2017). *Design and Analysis of Experiments*. Wiley.
-- Peterfy et al. (2008). OAI MRI protocol. *Osteoarthritis and Cartilage*.
-- Perez & Wang (2017). Effectiveness of augmentation. *arXiv:1712.04621*.
-- Shorten & Khoshgoftaar (2019). Survey on image augmentation. *J. Big Data*.
+- Berrimi, M. (2022). *OAI MRI 3D DESS dataset*. Kaggle.
+- Chlap, P., Min, H., Vandenberg, N., Dowling, J., Holloway, L., & Haworth, A. (2021). A review of medical image data augmentation techniques for deep learning applications. *Journal of Medical Imaging and Radiation Oncology*.
+- Hara, K., Kataoka, H., & Satoh, Y. (2018). Can Spatiotemporal 3D CNNs Retrace the History of 2D CNNs and ImageNet? *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*.
+- Kay, W., Carreira, J., Simonyan, K., Zhang, B., Hillier, C., Vijayanarasimhan, S., Viola, F., Green, T., Back, T., Natsev, P., Suleyman, M., & Zisserman, A. (2017). The Kinetics Human Action Video Dataset. *arXiv:1705.06950*.
+- Kingma, D. P., & Ba, J. (2014). Adam: A Method for Stochastic Optimization. *arXiv:1412.6980*.
+- Montgomery, D. C. (2017). *Design and Analysis of Experiments* (9th ed.). Wiley.
+- Peterfy, C. G., Schneider, E., & Nevitt, M. (2008). The Osteoarthritis Initiative: report on the design rationale for the magnetic resonance imaging protocol for the knee. *Osteoarthritis and Cartilage*.
+- Perez, L., & Wang, J. (2017). The Effectiveness of Data Augmentation in Image Classification using Deep Learning. *arXiv:1712.04621*.
+- Shorten, C., & Khoshgoftaar, T. M. (2019). A survey on Image Data Augmentation for Deep Learning. *Journal of Big Data*.
+
+
 
 ---
 
