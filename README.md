@@ -18,14 +18,19 @@ No sbcas2026, o aumento online estocástico não produziu diferenças estatistic
 
 Este projeto supera essa limitação ao adotar **aumento offline**: os volumes aumentados são pré-gerados e salvos em disco em proporções controladas (10%, 25%, 50%, 100%, 150%, 200%), permitindo construir a curva **AUC × proporção de aumento** e identificar o ponto de saturação.
 
+---
+
 **Literatura de embasamento:**
-- Shorten & Khoshgoftaar (2019): aumento offline garante controle exato e reprodutibilidade.
-- Perez & Wang (2017): comparam online vs. offline, favorecendo offline para estudos controlados.
-- Chlap et al. (2021): rotação < ±20°, translação < ±20%, ruído σ < 0.05 preservam plausibilidade anatômica em MRI.
+- [Shorten & Khoshgoftaar (2019)](https://github.com/thallescotta/offline-x-online-augmentation-knee-mri/blob/main/artigos/doi.org_10.1186_s40537-019-0197-0.pdf): revisam técnicas de aumento de dados para deep learning em imagens, incluindo transformações geométricas, manipulações de cor, GANs, aumento em espaço de características e decisões de projeto como tamanho final do dataset e test-time augmentation.
+- [Perez & Wang (2017)](https://github.com/thallescotta/offline-x-online-augmentation-knee-mri/blob/main/artigos/arXiv1712.04621v1.pdf): comparam diferentes estratégias de aumento de dados para classificação de imagens, incluindo transformações tradicionais, GANs/style transfer e aumento aprendido por redes neurais.
+- [Chlap et al. (2021)](https://github.com/thallescotta/offline-x-online-augmentation-knee-mri/blob/main/artigos/doi10_1111_1754-9485.13261.pdf): revisam técnicas de aumento de dados em imagens médicas de CT e MRI para aplicações de deep learning, abrangendo métodos básicos, deformáveis, baseados em deep learning e outras abordagens.
+
+
+
 
 ---
 
-## Estrutura do projeto
+## Estrutura do projeto (em andamento)
 
 ```
 augmentation-offline-2026/
