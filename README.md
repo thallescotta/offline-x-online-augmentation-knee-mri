@@ -8,8 +8,8 @@
 Avaliação do impacto da **quantidade** de aumento de dados offline na classificação binária de volumes de ressonância magnética do joelho (3D DESS), com comparação direta ao aumento online estocástico.
 
 Continuação direta de:
-- [sbcas2025](https://github.com/thallescotta/treinamento-cnn-3d-2026) — R3D-18, oversampling, k-fold
-- [sbcas2026](https://github.com/thallescotta/sbcas2026) — Aumento online, EX1–EX10, AUC ≈ 0.90
+- [sbcas2025](https://github.com/thallescotta/treinamento-cnn-3d-2026) : R3D-18, oversampling, k-fold
+- [sbcas2026](https://github.com/thallescotta/sbcas2026) : Aumento online, EX1–EX10, AUC ≈ 0.90
 
 ---
 
@@ -45,7 +45,7 @@ augmentation-offline-2026/
 ├── EX_OFFLINE_100.py       # Offline +100%
 ├── EX_OFFLINE_150.py       # Offline +150%
 ├── EX_OFFLINE_200.py       # Offline +200%
-├── EX_ONLINE_COMPARE.py    # Online L2 (réplica do EX8 sbcas2026 — comparação direta)
+├── EX_ONLINE_COMPARE.py    # Online L2 (réplica do EX8 sbcas2026 : comparação direta)
 │
 ├── analyze_results.py      # Curva AUC × proporção + testes t pareados + tabela
 │
@@ -146,39 +146,39 @@ python analyze_results.py
 Gera:
 - Terminal: tabela AUC por experimento + testes t pareados
 - `results/comparison_table.csv`
-- `results/figures/auc_vs_ratio.pdf` — figura principal para o artigo
+- `results/figures/auc_vs_ratio.pdf` : figura principal para o artigo
 - `results/figures/auc_vs_ratio.png`
 
 ---
 
 ## Protocolo experimental
-
+ 
 Idêntico ao sbcas2026 para garantir comparabilidade direta:
-
-| Parâmetro | Valor |
-|---|---|
-| Arquitetura | R3D-18 pré-treinada (Kinetics-400) |
-| Otimizador | Adam, lr=1×10⁻⁴ |
-| Perda | BCEWithLogitsLoss + pos_weight dinâmico |
-| AMP | Habilitado (autocast + GradScaler) |
-| Validação | 5-fold estratificado, seed=42 |
-| inner_val | 15% do outer_train (early stopping) |
-| Patience | 15 épocas |
-| Max épocas | 60 |
-| Batch size | 32 |
-| Oversampling | Desativado |
-
+ 
+| Parâmetro | Valor | Justificativa |
+|---|---|---|
+| Arquitetura | R3D-18 pré-treinada (Kinetics-400) | Melhor resultado no sbcas2026: AUC 88,49% (EX1) vs. 76,48% treinado do zero (EX2), p < 0,0001 |
+| Otimizador | Adam, lr=1×10⁻⁴ | Padrão amplamente adotado para fine-tuning de CNNs médicas (Kingma & Ba, 2014) |
+| Perda | BCEWithLogitsLoss + pos_weight dinâmico | Trata desbalanceamento (1,26:1) sem oversampling, calculado por fold sobre o inner_train |
+| AMP | Habilitado (autocast + GradScaler) | Viabiliza batch=32 nas 2× RTX 2080 Ti (12 GB); sem AMP, OOM força batch=2 (EX3 sbcas2026) |
+| Validação | 5-fold estratificado, seed=42 | Equilíbrio entre robustez estatística e custo computacional; estratificação preserva proporção de classes por fold |
+| inner_val | 15% do outer_train | Reservado exclusivamente para early stopping, sem participar da atualização de pesos nem da avaliação final |
+| Patience | 15 épocas | Permite convergência sem interrupção prematura; valor fixado no sbcas2026 após inspeção das curvas de loss |
+| Max épocas | 60 | Limite superior conservador; na prática o early stopping encerra antes em todos os experimentos do sbcas2026 |
+| Batch size | 32 | Máximo viável com AMP nas 2× RTX 2080 Ti; batches maiores degradam estimativa do gradiente (ver EX3) |
+| Oversampling | Desativado | Substituído por pos_weight, evitando redundância física de dados e variáveis de confusão entre experimentos |
+ 
 ### Transformações de aumento (parâmetros L2 / EX8 sbcas2026)
-
-| Transformação | Parâmetro |
-|---|---|
-| Flip axial | p=0.5 |
-| Rotação axial | ±10° |
-| Translação axial | ±10% |
-| Ruído gaussiano | σ=0.02 |
-| p_apply (geom + ruído) | 0.5 |
-
-Os parâmetros do EX8 (L2) foram escolhidos por terem produzido a maior AUC média no sbcas2026 (90.08 ± 1.26%), tornando-os o ponto de referência natural.
+ 
+| Transformação | Parâmetro | Justificativa |
+|---|---|---|
+| Flip axial | p=0,5 | Presente em todos os experimentos do sbcas2026; simula inversão lateral do posicionamento do joelho |
+| Rotação axial | ±10° | Nível L2 do sbcas2026, melhor AUC média (90,08%); dentro do limite anatômico de ±20° (Chlap et al., 2021) |
+| Translação axial | ±10% | Nível L2 do sbcas2026; simula variação de posicionamento durante a aquisição (Shorten & Khoshgoftaar, 2019) |
+| Ruído gaussiano | σ=0,02 | Nível L2 do sbcas2026; modela variação de equipamento e protocolo de MRI (Chlap et al., 2021) |
+| p_apply (geom + ruído) | 0,5 | Probabilidade de aplicação por amostra; mesma do sbcas2026, garante que nem toda amostra é transformada |
+ 
+Os parâmetros L2 (EX8) foram escolhidos por terem produzido a maior AUC média no sbcas2026 (90,08 ± 1,26%), tornando-os o ponto de referência natural para a comparação offline × online.
 
 ---
 
@@ -225,7 +225,7 @@ summary.json       → AUC média, std, IC95% e resultados por fold
 
 ## Autor
 
-**Thalles Cotta Fontainha** — `thalles.fontainha@aluno.cefet-rj.br`  
-Programa de Pós-Graduação em Instrumentação e Óptica Aplicada — CEFET/RJ
+**Thalles Cotta Fontainha** : `thalles.fontainha@aluno.cefet-rj.br`  
+Programa de Pós-Graduação em Instrumentação e Óptica Aplicada - CEFET/RJ
 
-**Orientador:** Prof. Felipe da R. Henriques — CEFET/RJ
+**Orientador:** Prof. Felipe da R. Henriques - CEFET/RJ
