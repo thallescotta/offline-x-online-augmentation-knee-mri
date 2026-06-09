@@ -21,7 +21,7 @@ Continuação direta de:
 
 No SBCAS-2026, o aumento online estocástico não produziu diferenças estatisticamente significativas entre os experimentos EX1–EX10. Uma hipótese central é que a natureza estocástica do aumento online impede o controle preciso sobre *quanto* de variação o modelo efetivamente recebe.
 
-Este projeto supera essa limitação ao adotar **aumento offline**: os volumes aumentados são pré-gerados e salvos em disco em proporções controladas (10%, 25%, 50%, 100%, 150%, 200%), permitindo construir a curva **AUC × proporção de aumento** e identificar o ponto de saturação.
+Este projeto propõe superar essa limitação ao adotar **aumento offline**: os volumes aumentados são pré-gerados e salvos em disco em proporções controladas (10%, 25%, 50%, 100%, 150%, 200%), permitindo construir a curva **AUC × proporção de aumento** e identificar o ponto de saturação.
 
 ---
 
@@ -35,7 +35,7 @@ Este projeto supera essa limitação ao adotar **aumento offline**: os volumes a
 
 ---
 
-## Estrutura do projeto (em andamento)
+## Estrutura do projeto *(Arquivos em desenvolvimento: estrutura sujeita a alterações)*
 
 ```
 augmentation-offline-2026/
@@ -116,8 +116,8 @@ python generate_offline.py \
 
 Saída esperada em `~/dataset/OAI-MRI-3DDESS-offline/`:
 ```
-ratio_010pct/normal_aug.npy      (165 volumes)
-ratio_010pct/abnormal_aug.npy    (131 volumes)
+ratio_010pct/normal_aug.npy      (~165 volumes, estimado)
+ratio_010pct/abnormal_aug.npy    (~131 volumes, estimado)
 ratio_025pct/...
 ...
 manifest.json
@@ -188,7 +188,7 @@ Os parâmetros L2 (EX8) foram escolhidos por terem produzido a maior AUC média 
 
 ## Artefatos por experimento
 
-Cada `EX_*.py` gera em `results/<exp_name>/`:
+Cada EX_*.py **deverá gerar** em results/<exp_name>/:
 
 ```
 fold_1/
@@ -205,8 +205,8 @@ summary.json       → AUC média, std, IC95% e resultados por fold
 
 - Teste t pareado bicaudal (n=5 folds) entre cada condição e o baseline.
 - IC95% via distribuição t de Student com 4 graus de liberdade.
-- p-valores não corrigidos para múltiplas comparações (exploratório).
-- Idêntico ao protocolo da Tabela 2 do SBCAS-2026 (Montgomery, 2017).
+- p-valores não corrigidos para múltiplas comparações (caráter exploratório).
+- Seguirá o mesmo protocolo da Tabela 2 do SBCAS-2026 (Montgomery, 2017).
 
 ---
 
