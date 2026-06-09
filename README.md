@@ -1,4 +1,5 @@
-# Aumento de Dados Offline para Classificação Binária de MRI 3D do Joelho
+
+# Offline × Online: Avaliação do Aumento de Dados em MRI Volumétrica do Joelho
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0.1-red.svg)](https://pytorch.org/)
