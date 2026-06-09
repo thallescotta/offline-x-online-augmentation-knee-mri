@@ -98,7 +98,7 @@ Os dados **não** estão incluídos por restrições de licença.
 
 ## Execução passo a passo
 
-### 1. Instalar dependências
+### 1. Instalar dependências (Se necessário)
 
 ```bash
 pip install -r requirements.txt
