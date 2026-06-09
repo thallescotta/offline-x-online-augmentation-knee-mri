@@ -225,11 +225,13 @@ summary.json       → AUC média, std, IC95% e resultados por fold
 
 
 
+
 ---
 
 ## Autor
 
-**Thalles Cotta Fontainha** : `thalles.fontainha@aluno.cefet-rj.br`  
+**Autor:** Thalles Cotta Fontainha - `thalles.fontainha@aluno.cefet-rj.br`  
 Programa de Pós-Graduação em Instrumentação e Óptica Aplicada - CEFET/RJ
 
-**Orientador:** Prof. Felipe da R. Henriques - CEFET/RJ
+**Orientador:** Prof. Dr. Felipe da R. Henriques - CEFET/RJ, Campus Maracanã - `felipe.henriques@cefet-rj.br`  
+**Coorientador:** Prof. Dr. Amaro Azevedo de Lima - CEFET/RJ, Campus Nova Iguaçu - `amaro.lima@cefet-rj.br`
